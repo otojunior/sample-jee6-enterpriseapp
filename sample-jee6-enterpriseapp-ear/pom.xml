@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.otojunior</groupId>
+		<artifactId>sample-jee6-enterpriseapp-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>sample-jee6-enterpriseapp-ear</artifactId>
+	<packaging>ear</packaging>
+
+	<name>sample-jee6-enterpriseapp: EAR Module</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<plugin.version.maven-ear-plugin>2.8</plugin.version.maven-ear-plugin>
+	</properties>
+
+	<build>
+		<finalName>sample-jee6-enterpriseapp</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>${plugin.version.maven-ear-plugin}</version>
+				<configuration>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<skinnyWars>true</skinnyWars>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+						<manifestEntries>
+							<Implementation-Build>${buildNumber}</Implementation-Build>
+							<Implementation-Branch>${scmBranch}</Implementation-Branch>
+							<Implementation-Date>${timestamp}</Implementation-Date>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.otojunior</groupId>
+			<artifactId>sample-jee6-enterpriseapp</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.otojunior</groupId>
+			<artifactId>sample-jee6-enterpriseapp-ejb</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.otojunior</groupId>
+			<artifactId>sample-jee6-enterpriseapp-jar</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>glassfish-profile</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			
+			<properties>
+				<plugin.version.maven-embedded-glassfish-plugin>3.1.2.2</plugin.version.maven-embedded-glassfish-plugin>
+				<dependency.version.h2>1.3.176</dependency.version.h2>
+				<dependency.version.org.osgi.core>4.3.1</dependency.version.org.osgi.core>
+				<config.maven-embedded-glassfish-plugin.port>8080</config.maven-embedded-glassfish-plugin.port>
+			</properties>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.glassfish.embedded</groupId>
+						<artifactId>maven-embedded-glassfish-plugin</artifactId>
+						<version>${plugin.version.maven-embedded-glassfish-plugin}</version>
+						<configuration>
+							<name>${project.build.finalName}</name>
+							<app>target\${project.build.finalName}.ear</app>
+							<contextRoot>${project.build.finalName}</contextRoot>
+							<port>${config.maven-embedded-glassfish-plugin.port}</port>
+							<autoDelete>true</autoDelete>
+						</configuration>
+						<!-- 
+							mvn embedded-glassfish:run				(deploy + run)
+							mvn embedded-glassfish:deploy			(deploy)
+							mvn embedded-glassfish:undeploy			(undeploy)
+							mvn embedded-glassfish:start			(server start)
+							mvn embedded-glassfish:stop				(server stop)
+						-->
+						<executions>
+							<execution>
+								<phase>deploy</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+						
+						<dependencies>
+							<dependency>
+								<groupId>com.h2database</groupId>
+								<artifactId>h2</artifactId>
+								<version>${dependency.version.h2}</version>
+							</dependency>
+							
+							<dependency>
+								<groupId>org.osgi</groupId>
+								<artifactId>org.osgi.core</artifactId>
+								<version>${dependency.version.org.osgi.core}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>jboss-profile</id>
+			
+			<properties>
+				<plugin.version.jboss-as-maven-plugin>7.5.Final</plugin.version.jboss-as-maven-plugin>
+			</properties>
+			
+			<build>
+				<plugins>
+					<plugin>
+		                <groupId>org.jboss.as.plugins</groupId>
+		                <artifactId>jboss-as-maven-plugin</artifactId>
+		                <version>${plugin.version.jboss-as-maven-plugin}</version>
+		                <executions>
+		                    <execution>
+		                        <phase>deploy</phase>
+		                        <goals>
+		                            <goal>run</goal>
+		                        </goals>
+		                    </execution>
+		                </executions>
+		            </plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>
