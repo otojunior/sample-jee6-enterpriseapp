@@ -7,12 +7,10 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.inject.Model;
-import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
 import org.otojunior.sample.enterpriseapp.dao.UserDao;
 import org.otojunior.sample.enterpriseapp.entity.User;
-import org.otojunior.sample.enterpriseapp.entity.UserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,13 +24,22 @@ public class UserBean {
 	
 	@EJB
 	private UserDao dao;
-	
-	private String login;
-	private String name;
-	
+		
 	@Inject
-	private UserDto userDto;
+	private User userDto;
 	
+	public String find() {
+		LOG.info(userDto.toString());
+		return null;
+	}
+
+	/**
+	 * @return the userDto
+	 */
+	public User getUserDto() {
+		return userDto;
+	}
+
 	/**
 	 * Persistence test.
 	 * @return Forward action.
@@ -45,33 +52,10 @@ public class UserBean {
 		return null;
 	}
 	
-	public String find() {
-		LOG.info("Searching by: " + login + " and " + name);
-		LOG.info("User Null? " + String.valueOf(userDto == null));
-		return null;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public UserDto getUserDto() {
-		return userDto;
-	}
-
-	public void setUserDto(UserDto userDto) {
+	/**
+	 * @param userDto the userDto to set
+	 */
+	public void setUserDto(User userDto) {
 		this.userDto = userDto;
 	}
 }
