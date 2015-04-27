@@ -24,10 +24,10 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @NamedQueries({ 
 	@NamedQuery(
 		name = User.QUERY_FIND_ALL, 
-		query = "select u from User u"),
+		query = "select new User(u.id, u.login, u.name) from User u"),
 	@NamedQuery(
 		name = User.QUERY_FIND_BY_LOGIN, 
-		query = "select u from User u where u.login = :_login")
+		query = "select new User(u.id, u.login, u.name) from User u where u.login = :_login")
 })
 public class User {
 	private static final int COL_LENGTH_NAME = 50;
@@ -74,6 +74,26 @@ public class User {
 	@Transient
 	private String password;
 
+	/**
+	 * Default constructor
+	 */
+	public User() {
+		
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @param login
+	 * @param name
+	 */
+	public User(Long id, String login, String name) {
+		this.id = id;
+		this.login = login;
+		this.name = name;
+	}
+	
+	
 	/**
 	 * {@inheritDoc}
 	 * @see java.lang.Object#equals(java.lang.Object)

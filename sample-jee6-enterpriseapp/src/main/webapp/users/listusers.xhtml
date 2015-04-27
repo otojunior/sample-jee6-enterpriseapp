@@ -12,14 +12,38 @@
 			<h:form>
 				<p>
 					<h:outputLabel value="Login:" />
-					<h:inputText value="#{userBean.userDto.login}" />
+					<h:inputText id="login" value="#{userBean.dto.login}" />
 				</p>
 				<p>
 					<h:outputLabel value="Name:" />
-					<h:inputText value="#{userBean.userDto.name}" />
+					<h:inputText id="name" value="#{userBean.dto.name}" />
 				</p>
 				<p>
-					<h:commandButton action="#{userBean.find}" value="#{msg['command.search']}" type="submit"/>
+					<h:commandButton action="#{userBean.find}" value="#{msg['command.search']}" >
+						<f:ajax execute="login name" render="userTableId" />
+					</h:commandButton>
+				</p>
+				<p>
+					<h:dataTable id="userTableId" value="#{userBean.dto.users}" var="aUser" border="1">
+						<f:facet name="header">
+							<h:outputText value="Users List" />
+						</f:facet>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Login" />
+							</f:facet>
+							<h:outputText value="#{aUser.login}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
+							<h:outputText value="#{aUser.name}" />
+						</h:column>
+						<f:facet name="footer">
+							<h:outputText value="Total: #{userBean.dto.usersListSize}" />
+						</f:facet>
+					</h:dataTable>
 				</p>
 			</h:form>
 		</ui:define>

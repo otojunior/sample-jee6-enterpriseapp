@@ -30,9 +30,9 @@ public class UserPopulator {
 		LOG.info("Populating User Records");
 		for (int i = 1; i <= 9; i++) {
 			User user = new User();
-			user.setLogin("login"+i);
-			user.setName("User " + 1);
-			user.setPassword("pass0"+i);
+			user.setLogin("userlogin"+i);
+			user.setName("User Example " + i);
+			user.setPassword("passwd0"+i);
 			em.persist(user);
 			LOG.info("Saved record " + user.getLogin());
 		}
