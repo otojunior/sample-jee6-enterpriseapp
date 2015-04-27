@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="uiPageTitle"/>
+		<ui:define name="uiPanelTitle"/>
+		<ui:define name="uiPanelDescription">#{msg['panel.description.listusers']}</ui:define>
+		<ui:define name="uiContent">
+			<h:form>
+				<p>
+					<h:outputLabel value="Login:" />
+					<h:inputText value="#{userBean.userDto.login}" />
+				</p>
+				<p>
+					<h:outputLabel value="Name:" />
+					<h:inputText value="#{userBean.userDto.name}" />
+				</p>
+				<p>
+					<h:commandButton action="#{userBean.find}" value="#{msg['command.search']}" type="submit"/>
+				</p>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

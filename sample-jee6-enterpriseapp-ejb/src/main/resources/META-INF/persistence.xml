@@ -9,8 +9,10 @@
 			Glassfish: java:app/jdbc/<nome do datasource>
 			JBoss: jdbc/<nome do datasource>
 		-->
-		<jta-data-source>java:app/jdbc/sample-jee6-enterpriseapp-ds</jta-data-source>
+		<jta-data-source>jdbc/sample-jee6-enterpriseapp-ds</jta-data-source>
+		
 		<class>org.otojunior.sample.enterpriseapp.entity.User</class>
+		
 		<properties>
 			<!--
 				<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />

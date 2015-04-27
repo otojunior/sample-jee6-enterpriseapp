@@ -5,15 +5,18 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 	
 	<ui:composition template="/templates/template.xhtml">
-		<ui:define name="uiPageTitle">sample-jee6-enterpriseapp application</ui:define>
-		<ui:define name="uiPanelTitle">sample-jee6-enterpriseapp application ONLINE!</ui:define>
+		<ui:define name="uiPageTitle"/>
+		<ui:define name="uiPanelTitle"/>
 		<ui:define name="uiPanelDescription">
 			<p>
 				<h:form>
-					<h:commandButton action="#{userBean.persistenceTest}" value="Persistence Test!" type="submit" />
+					<ul>
+						<li><h:commandLink action="users/listusers" value="#{msg['menu.item.listusers']}" /></li>
+						<li><h:commandLink action="editusers" value="#{msg['menu.item.newuser']}" /></li>
+					</ul>
 				</h:form>
 			</p>
 		</ui:define>
+		<ui:define name="uiContent"/>
 	</ui:composition>
-	
 </html>
