@@ -31,7 +31,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 })
 public class User {
 	private static final int COL_LENGTH_NAME = 50;
-	private static final int COL_LENGTH_LOGIN = 10;
+	private static final int COL_LENGTH_LOGIN = 20;
 	private static final int COL_LENGTH_SHA1PWD = 40;
 	
 	public static final String QUERY_FIND_ALL = "user.query.findAll";

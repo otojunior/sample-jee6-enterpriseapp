@@ -7,16 +7,9 @@
 	<ui:composition template="/templates/template.xhtml">
 		<ui:define name="uiPageTitle"/>
 		<ui:define name="uiPanelTitle"/>
-		<ui:define name="uiPanelDescription">
-			<p>
-				<h:form>
-					<ul>
-						<li><h:commandLink action="#{userBean.listUsers}" value="#{msg['menu.item.listusers']}" styleClass="menuitem" /></li>
-						<li><h:commandLink action="users/editusers" value="#{msg['menu.item.newuser']}" styleClass="menuitem"/></li>
-					</ul>
-				</h:form>
-			</p>
+		<ui:define name="uiPanelDescription">(Em construção)</ui:define>
+		<ui:define name="uiContent">
+			(Em construção)
 		</ui:define>
-		<ui:define name="uiContent"/>
 	</ui:composition>
 </html>

@@ -28,13 +28,54 @@ public class UserPopulator {
 	@PostConstruct
 	public void start() {
 		LOG.info("Populating User Records");
-		for (int i = 1; i <= 9; i++) {
-			User user = new User();
-			user.setLogin("userlogin"+i);
-			user.setName("User Example " + i);
-			user.setPassword("passwd0"+i);
-			em.persist(user);
-			LOG.info("Saved record " + user.getLogin());
-		}
+
+		User user = new User();
+		user.setLogin("mahoney");
+		user.setName("Carey Mahoney");
+		user.setPassword("passwd01");
+		em.persist(user);
+		LOG.info("Saved record " + user.getLogin());
+		
+		user = new User();
+		user.setLogin("jones");
+		user.setName("Larvelle Jones");
+		user.setPassword("passwd02");
+		em.persist(user);
+		LOG.info("Saved record " + user.getLogin());
+		
+		user = new User();
+		user.setLogin("hightower");
+		user.setName("Moses Hightower");
+		user.setPassword("passwd03");
+		em.persist(user);
+		LOG.info("Saved record " + user.getLogin());
+		
+		user = new User();
+		user.setLogin("tackleberry");
+		user.setName("Eugene Tackleberry");
+		user.setPassword("passwd04");
+		em.persist(user);
+		LOG.info("Saved record " + user.getLogin());
+		
+		user = new User();
+		user.setLogin("house");
+		user.setName("Thomas House Conklin");
+		user.setPassword("passwd05");
+		em.persist(user);
+		LOG.info("Saved record " + user.getLogin());
+		
+		user = new User();
+		user.setLogin("hooks");
+		user.setName("Laverne Hooks");
+		user.setPassword("passwd06");
+		em.persist(user);
+		LOG.info("Saved record " + user.getLogin());
+		
+		user = new User();
+		user.setLogin("callahan");
+		user.setName("Debbie Callahan");
+		user.setPassword("passwd07");
+		em.persist(user);
+		LOG.info("Saved record " + user.getLogin());
 	}
 }

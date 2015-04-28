@@ -19,12 +19,12 @@
 					<h:inputText id="name" value="#{userBean.dto.name}" />
 				</p>
 				<p>
-					<h:commandButton action="#{userBean.find}" value="#{msg['command.search']}" >
+					<h:commandButton action="#{userBean.search}" value="#{msg['command.search']}" >
 						<f:ajax execute="login name" render="userTableId" />
 					</h:commandButton>
 				</p>
 				<p>
-					<h:dataTable id="userTableId" value="#{userBean.dto.users}" var="aUser" border="1">
+					<h:dataTable id="userTableId" value="#{userBean.dto.users}" var="aUser" styleClass="gridtable">
 						<f:facet name="header">
 							<h:outputText value="Users List" />
 						</f:facet>
