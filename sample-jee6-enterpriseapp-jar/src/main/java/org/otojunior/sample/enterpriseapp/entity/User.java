@@ -24,10 +24,10 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @NamedQueries({ 
 	@NamedQuery(
 		name = User.QUERY_FIND_ALL, 
-		query = "select new User(u.id, u.login, u.name) from User u"),
+		query = "select new org.otojunior.sample.enterpriseapp.entity.User(u.id, u.login, u.name) from User u"),
 	@NamedQuery(
 		name = User.QUERY_FIND_BY_LOGIN, 
-		query = "select new User(u.id, u.login, u.name) from User u where u.login = :_login")
+		query = "select new org.otojunior.sample.enterpriseapp.entity.User(u.id, u.login, u.name) from User u where u.login = :_login")
 })
 public class User {
 	private static final int COL_LENGTH_NAME = 50;
