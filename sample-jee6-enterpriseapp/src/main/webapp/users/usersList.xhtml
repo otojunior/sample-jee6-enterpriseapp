@@ -7,44 +7,44 @@
 	<ui:composition template="/templates/template.xhtml">
 		<ui:define name="uiPageTitle"/>
 		<ui:define name="uiPanelTitle"/>
-		<ui:define name="uiPanelDescription">#{msg['panel.description.listusers']}</ui:define>
+		<ui:define name="uiPanelDescription">#{msg['usersList.uiPanelDescription']}</ui:define>
 		<ui:define name="uiContent">
 			<h:form id="idForm">
 				<p>
-					<h:outputLabel id="idLabelLogin" value="Login:" />
+					<h:outputLabel id="idLabelLogin" value="#{msg['usersList.idLabelLogin']}" />
 					<h:inputText id="idInputLogin" value="#{userBean.dto.login}" />
 				</p>
 				<p>
-					<h:outputLabel id="idLabelName" value="Name:" />
+					<h:outputLabel id="idLabelName" value="#{msg['usersList.idLabelName']}" />
 					<h:inputText id="idInputName" value="#{userBean.dto.name}" />
 				</p>
 				<p>
-					<h:commandButton id="idCommandSearch" action="#{userBean.search}" value="#{msg['command.search']}" >
+					<h:commandButton id="idCommandSearch" action="#{userBean.search}" value="#{msg['usersList.idCommandSearch']}" >
 						<f:ajax execute="idInputLogin idInputName" render="idPanelGroup" />
 					</h:commandButton>
-					<h:commandButton id="idCommandReset" action="listusers" value="Limpar" type="reset" />
+					<h:commandButton id="idCommandReset" action="listusers" value="#{msg['usersList.idCommandReset']}" type="reset" />
 				</p>
 				<p>
 					<h:panelGroup layout="block" id="idPanelGroup">
-						<h:outputLabel id="idLabelNoRows" value="Não possui registros!" rendered="#{userBean.dto.usersListSize eq 0}"/>
+						<h:outputLabel id="idLabelNoRows" value="#{msg['usersList.idLabelNoRows']}" rendered="#{userBean.dto.usersListSize eq 0}"/>
 						<h:dataTable id="idDataTable" value="#{userBean.dto.users}" var="aUser" styleClass="gridtable" rendered="#{userBean.dto.usersListSize gt 0}">
 							<f:facet name="header">
-								<h:outputText id="idOutputTableHeader" value="Users List" />
+								<h:outputText id="idOutputTableHeader" value="#{msg['usersList.idOutputTableHeader']}" />
 							</f:facet>
 							<h:column>
 								<f:facet name="header">
-									<h:outputText id="idOutputColumnHeaderLogin" value="Login" />
+									<h:outputText id="idOutputColumnHeaderLogin" value="#{msg['usersList.idOutputColumnHeaderLogin']}" />
 								</f:facet>
 								<h:outputText id="idOutputColumnValueLogin" value="#{aUser.login}" />
 							</h:column>
 							<h:column>
 								<f:facet name="header">
-									<h:outputText id="idOutputColumnHeaderName" value="Name" />
+									<h:outputText id="idOutputColumnHeaderName" value="#{msg['usersList.idOutputColumnHeaderName']}" />
 								</f:facet>
 								<h:outputText id="idOutputColumnValueName" value="#{aUser.name}" />
 							</h:column>
 							<f:facet name="footer">
-								<h:outputText id="idOutputTableFooter" value="Total: #{userBean.dto.usersListSize}" />
+								<h:outputText id="idOutputTableFooter" value="#{msg['usersList.idOutputTableFooter']} #{userBean.dto.usersListSize}" />
 							</f:facet>
 						</h:dataTable>
 					</h:panelGroup>
