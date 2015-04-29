@@ -53,4 +53,41 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>eclipselink-profile</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+				    <groupId>org.glassfish.extras</groupId>
+				    <artifactId>glassfish-embedded-all</artifactId>
+				    <version>${dependency.version.glassfish}</version>
+				    <scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+		
+		<profile>
+			<id>hibernate-profile</id>
+			<dependencies>
+				<dependency>
+		            <groupId>org.jboss.spec</groupId>
+		            <artifactId>jboss-javaee-6.0</artifactId>
+		            <version>${dependency.version.jboss-javaee}</version>
+		            <type>pom</type>
+		            <scope>test</scope>
+		        </dependency>
+				
+				<dependency>
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate-entitymanager</artifactId>
+					<version>${dependency.version.hibernate}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 </project>

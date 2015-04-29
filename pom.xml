@@ -97,39 +97,6 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!--
-			******************************************************************************
-			Persistence dependency for persistence layer (DAOs) unit tests.
-			This archetype supports Hibernate (JBoss default) and 
-			EclipseLink (Glassfish default) implementation.
-			This configuration is EclipseLink enabled by default (Reference implementation).
-			Uncomment the JBoss/Hibernate dependency and comment EclipseLink dependency for 
-			use Hibernate. Provider also must be selected in test/persistence.xml
-			******************************************************************************
-		-->
-		
-		<dependency>
-		    <groupId>org.glassfish.extras</groupId>
-		    <artifactId>glassfish-embedded-all</artifactId>
-		    <version>${dependency.version.glassfish}</version>
-		    <scope>test</scope>
-		</dependency>
-		
-		<!-- <dependency>
-            <groupId>org.jboss.spec</groupId>
-            <artifactId>jboss-javaee-6.0</artifactId>
-            <version>${dependency.version.jboss-javaee}</version>
-            <type>pom</type>
-            <scope>test</scope>
-        </dependency>
-		
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${dependency.version.hibernate}</version>
-			<scope>test</scope>
-		</dependency> -->
-
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
