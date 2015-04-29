@@ -28,7 +28,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<dependency.version.junit>4.11</dependency.version.junit>
 		<dependency.version.glassfish>3.2-b06</dependency.version.glassfish>
-		<dependency.version.jboss-javaee-all>3.0.2</dependency.version.jboss-javaee-all>
+		<dependency.version.jboss-javaee>3.0.3.Final</dependency.version.jboss-javaee>
 		<dependency.version.hibernate>4.2.15.Final</dependency.version.hibernate>
 		<dependency.version.easymock>3.2</dependency.version.easymock>
 		<dependency.version.powermock>1.5.6</dependency.version.powermock>
@@ -116,11 +116,12 @@
 		</dependency>
 		
 		<!-- <dependency>
-		    <groupId>org.jboss.spec</groupId>
-		    <artifactId>jboss-javaee-all-6.0</artifactId>
-		    <version>${dependency.version.jboss-javaee-all}</version>
-		    <scope>test</scope>
-		</dependency>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-6.0</artifactId>
+            <version>${dependency.version.jboss-javaee}</version>
+            <type>pom</type>
+            <scope>test</scope>
+        </dependency>
 		
 		<dependency>
 			<groupId>org.hibernate</groupId>
