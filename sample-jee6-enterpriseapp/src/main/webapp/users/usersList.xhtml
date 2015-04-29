@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="uiPageTitle"/>
+		<ui:define name="uiPanelTitle"/>
+		<ui:define name="uiPanelDescription">#{msg['panel.description.listusers']}</ui:define>
+		<ui:define name="uiContent">
+			<h:form id="idForm">
+				<p>
+					<h:outputLabel id="idLabelLogin" value="Login:" />
+					<h:inputText id="idInputLogin" value="#{userBean.dto.login}" />
+				</p>
+				<p>
+					<h:outputLabel id="idLabelName" value="Name:" />
+					<h:inputText id="idInputName" value="#{userBean.dto.name}" />
+				</p>
+				<p>
+					<h:commandButton id="idCommandSearch" action="#{userBean.search}" value="#{msg['command.search']}" >
+						<f:ajax execute="idInputLogin idInputName" render="idPanelGroup" />
+					</h:commandButton>
+					<h:commandButton id="idCommandReset" action="listusers" value="Limpar" type="reset" />
+				</p>
+				<p>
+					<h:panelGroup layout="block" id="idPanelGroup">
+						<h:outputLabel id="idLabelNoRows" value="Não possui registros!" rendered="#{userBean.dto.usersListSize eq 0}"/>
+						<h:dataTable id="idDataTable" value="#{userBean.dto.users}" var="aUser" styleClass="gridtable" rendered="#{userBean.dto.usersListSize gt 0}">
+							<f:facet name="header">
+								<h:outputText id="idOutputTableHeader" value="Users List" />
+							</f:facet>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText id="idOutputColumnHeaderLogin" value="Login" />
+								</f:facet>
+								<h:outputText id="idOutputColumnValueLogin" value="#{aUser.login}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText id="idOutputColumnHeaderName" value="Name" />
+								</f:facet>
+								<h:outputText id="idOutputColumnValueName" value="#{aUser.name}" />
+							</h:column>
+							<f:facet name="footer">
+								<h:outputText id="idOutputTableFooter" value="Total: #{userBean.dto.usersListSize}" />
+							</f:facet>
+						</h:dataTable>
+					</h:panelGroup>
+				</p>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

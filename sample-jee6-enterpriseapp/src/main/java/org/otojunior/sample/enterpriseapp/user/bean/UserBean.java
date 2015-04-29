@@ -28,7 +28,7 @@ public class UserBean {
 	
 	public String listUsers() {
 		dto.setUsers(userFacade.findAll());
-		return "users/listusers";
+		return "users/usersList";
 	}
 	
 	public String search() {
