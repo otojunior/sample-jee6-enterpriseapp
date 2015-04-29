@@ -3,12 +3,10 @@
  */
 package org.otojunior.sample.enterpriseapp.user.bean;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
-import org.apache.commons.lang3.StringUtils;
 import org.otojunior.sample.enterpriseapp.facade.UserFacade;
 import org.otojunior.sample.enterpriseapp.user.dto.UserListDto;
 import org.slf4j.Logger;
@@ -34,7 +32,7 @@ public class UserBean {
 	}
 	
 	public String search() {
-		LOG.info("Find");
+		LOG.info("search");
 		dto.setUsers(userFacade.find(dto.getLogin(), dto.getName()));
 		return null;
 	}

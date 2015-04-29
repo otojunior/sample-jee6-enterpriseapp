@@ -29,7 +29,12 @@ public class UserFacade {
 	 * @return All users.
 	 */
 	public List<User> findAll() {
-		LOG.debug("UserFacade:findAll");
+		LOG.trace("UserFacade:findAll");
 		return userService.findAll();
+	}
+
+	public List<User> find(String login, String name) {
+		LOG.trace("UserFacade:find");
+		return userService.find(login, name);
 	}
 }

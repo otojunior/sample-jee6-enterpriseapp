@@ -29,7 +29,12 @@ public class UserService {
 	 * @return All users.
 	 */
 	public List<User> findAll() {
-		LOG.debug("UserService:findAll");
+		LOG.trace("UserService:findAll");
 		return userDao.findAll();
+	}
+
+	public List<User> find(String login, String name) {
+		LOG.trace("UserService:find");
+		return userDao.find(login, name);
 	}
 }
