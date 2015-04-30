@@ -1,4 +1,4 @@
-table.gridtable {
+table.samplejee6enterpriseapp_dataTable {
 	font-family: verdana,arial,sans-serif;
 	font-size:11px;
 	color:#333333;
@@ -7,7 +7,7 @@ table.gridtable {
 	border-collapse: collapse;
 }
 
-table.gridtable th {
+table.samplejee6enterpriseapp_dataTable th {
 	border-width: 1px;
 	padding: 4px;
 	border-style: solid;
@@ -15,7 +15,7 @@ table.gridtable th {
 	background-color: #dedede;
 }
 
-table.gridtable td {
+table.samplejee6enterpriseapp_dataTable td {
 	border-width: 1px;
 	padding: 4px;
 	border-style: solid;
@@ -36,4 +36,11 @@ a.menuitem:link {
 a.menuitem:hover { 
   border-color: grey;  
   color: grey;
+}
+
+div.samplejee6enterpriseapp_searchPanel {
+    border-color: grey;
+    border-style: solid;
+    border-width: 1px 3px 3px 1px;
+    padding: 10px;
 }
