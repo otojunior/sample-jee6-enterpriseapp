@@ -9,10 +9,20 @@
 		<ui:define name="uiPanelTitle"/>
 		<ui:define name="uiPanelDescription">
 			<p>
-				<h:form>
+				<h:form id="idForm">
 					<ul>
-						<li><h:commandLink action="#{userBean.listUsers}" value="#{msg['menu.item.listusers']}" styleClass="menuitem" /></li>
-						<li><h:commandLink action="users/editusers" value="#{msg['menu.item.newuser']}" styleClass="menuitem"/></li>
+						<li>
+							<h:commandLink id="idCommandListUsers" 
+								action="#{userBean.listUsers}" 
+								value="#{msg.index_idCommandListUsers}" 
+								styleClass="menuitem" />
+						</li>
+						<li>
+							<h:commandLink id="idCommandEditUsers"
+								action="users/editusers" 
+								value="#{msg.index_idCommandEditUsers}" 
+								styleClass="menuitem"/>
+						</li>
 					</ul>
 				</h:form>
 			</p>
