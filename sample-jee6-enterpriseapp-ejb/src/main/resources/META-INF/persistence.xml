@@ -11,7 +11,8 @@
 		-->
 		<jta-data-source>jdbc/sample-jee6-enterpriseapp-ds</jta-data-source>
 		
-		<class>org.otojunior.sample.enterpriseapp.entity.User</class>
+		<class>org.otojunior.sample.enterpriseapp.entity.petowner.PetOwner</class>
+		<class>org.otojunior.sample.enterpriseapp.entity.common.Address</class>
 		
 		<properties>
 			<!--

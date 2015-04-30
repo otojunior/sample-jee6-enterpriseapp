@@ -5,7 +5,10 @@
 	version="2.0">
 
 	<persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
-		<class>org.otojunior.sample.enterpriseapp.entity.User</class>
+		
+		<class>org.otojunior.sample.enterpriseapp.entity.petowner.PetOwner</class>
+		<class>org.otojunior.sample.enterpriseapp.entity.common.Address</class>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />
