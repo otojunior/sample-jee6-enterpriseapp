@@ -1,4 +1,4 @@
-package org.otojunior.sample.enterpriseapp.dao;
+package org.otojunior.sample.enterpriseapp.dao.petowner;
 
 import java.util.Collections;
 import java.util.List;

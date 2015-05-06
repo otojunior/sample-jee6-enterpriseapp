@@ -1,4 +1,4 @@
-package org.otojunior.sample.enterpriseapp.dao;
+package org.otojunior.sample.enterpriseapp.dao.petowner;
 
 import static org.junit.Assert.*;
 
@@ -14,6 +14,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.otojunior.sample.enterpriseapp.dao.petowner.PetOwnerDao;
 import org.otojunior.sample.enterpriseapp.entity.common.Address;
 import org.otojunior.sample.enterpriseapp.entity.petowner.PetOwner;
 import org.powermock.reflect.Whitebox;
