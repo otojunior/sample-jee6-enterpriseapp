@@ -1,7 +1,10 @@
 package org.otojunior.sample.enterpriseapp.dao.petowner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,7 +17,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.otojunior.sample.enterpriseapp.dao.petowner.PetOwnerDao;
 import org.otojunior.sample.enterpriseapp.entity.common.Address;
 import org.otojunior.sample.enterpriseapp.entity.petowner.PetOwner;
 import org.powermock.reflect.Whitebox;
@@ -64,19 +66,44 @@ public class PetOwnerDaoTest {
 	 * Populate the database for the tests.
 	 */
 	private void populate() {
-		for (int i = 0; i < 10; i++) {
-			Address a = new Address();
-			a.setAddress("Address " + i);
-			a.setCity("City " + i);
-			a.setNumber("" + i+1);
-			a.setState("ST");
-
-			PetOwner p = new PetOwner();
-			p.setName("Name " + i);
-			p.setAddress(a);
-			entityManager.persist(p);
-			LOG.info(p.toString());
-		}
+		// Entity 1
+		Address a = new Address();
+		a.setAddress("Couves St.");
+		a.setCity("Hortifruti");
+		a.setNumber("69");
+		a.setState("TS");
+		
+		PetOwner p = new PetOwner();
+		p.setName("John Smith");
+		p.setAddress(a);
+		entityManager.persist(p);
+		LOG.info(p.toString());
+		
+		// Entity 2
+		a = new Address();
+		a.setAddress("Potato Av.");
+		a.setCity("Roots");
+		a.setNumber("123");
+		a.setState("TS");
+		
+		p = new PetOwner();
+		p.setName("Mary Johnson");
+		p.setAddress(a);
+		entityManager.persist(p);
+		LOG.info(p.toString());
+		
+		// Entity 3
+		a = new Address();
+		a.setAddress("Green Leaf St.");
+		a.setCity("Trees");
+		a.setNumber("666");
+		a.setState("TS");
+		
+		p = new PetOwner();
+		p.setName("Robert Marley");
+		p.setAddress(a);
+		entityManager.persist(p);
+		LOG.info(p.toString());
 	}
 
 	/**
@@ -95,7 +122,7 @@ public class PetOwnerDaoTest {
 	@Test
 	public void testFindAll() {
 		List<PetOwner> all = petOwnerDao.findAll();
-		assertEquals(10, all.size());
+		assertEquals(3, all.size());
 	}
 
 	/**
@@ -108,90 +135,95 @@ public class PetOwnerDaoTest {
 		
 		PetOwner p = petOwnerDao.findById(Long.valueOf(minId));
 		assertNotNull(p);
-		assertEquals("Name 0", p.getName());
+		assertEquals("John Smith", p.getName());
 	}
 	
 	@Test
 	public void testFindAllParameters() {
-		List<PetOwner> result = petOwnerDao.find("Name", "Add", "City");
-		assertEquals(10, result.size());
-		for (int i = 0; i < 10; i++) {
-			PetOwner petOwner = result.get(i);
-			assertEquals("Name " + i, petOwner.getName());
-			assertEquals("Address " + i, petOwner.getAddress().getAddress());
-			assertEquals("City " + i, petOwner.getAddress().getCity());
-		}
+		List<PetOwner> result = petOwnerDao.find("john", "ot", "oo");
+		assertEquals(1, result.size());
+		
+		PetOwner petOwner = result.get(0);
+		assertEquals("Mary Johnson", petOwner.getName());
+		assertEquals("Potato Av.", petOwner.getAddress().getAddress());
+		assertEquals("Roots", petOwner.getAddress().getCity());
 	}
 	
 	@Test
 	public void testFindParameterName() {
-		List<PetOwner> result = petOwnerDao.find("Nam", null, null);
-		assertEquals(10, result.size());
-		for (int i = 0; i < 10; i++) {
-			PetOwner petOwner = result.get(i);
-			assertEquals("Name " + i, petOwner.getName());
-			assertEquals("Address " + i, petOwner.getAddress().getAddress());
-			assertEquals("City " + i, petOwner.getAddress().getCity());
-		}
+		List<PetOwner> result = petOwnerDao.find("john", null, null);
+		assertEquals(2, result.size());
+		
+		Collections.sort(result, new Comparator<PetOwner>() {
+			@Override
+			public int compare(PetOwner o1, PetOwner o2) {
+				return o1.getId().compareTo(o2.getId());
+			}
+		});
+		
+		PetOwner p = result.get(0);
+		assertEquals("John Smith", p.getName());
+		assertEquals("Couves St.", p.getAddress().getAddress());
+		assertEquals("Hortifruti", p.getAddress().getCity());
+		
+		p = result.get(1);
+		assertEquals("Mary Johnson", p.getName());
+		assertEquals("Potato Av.", p.getAddress().getAddress());
+		assertEquals("Roots", p.getAddress().getCity());
 	}
 	
 	@Test
 	public void testFindParameterAddress() {
-		List<PetOwner> result = petOwnerDao.find(null, "ddres", null);
-		assertEquals(10, result.size());
-		for (int i = 0; i < 10; i++) {
-			PetOwner petOwner = result.get(i);
-			assertEquals("Name " + i, petOwner.getName());
-			assertEquals("Address " + i, petOwner.getAddress().getAddress());
-			assertEquals("City " + i, petOwner.getAddress().getCity());
-		}
+		List<PetOwner> result = petOwnerDao.find(null, "ouv", null);
+		assertEquals(1, result.size());
+		
+		PetOwner p = result.get(0);
+		assertEquals("John Smith", p.getName());
+		assertEquals("Couves St.", p.getAddress().getAddress());
+		assertEquals("Hortifruti", p.getAddress().getCity());
 	}
 	
 	@Test
 	public void testFindParameterCity() {
-		List<PetOwner> result = petOwnerDao.find(null, null, "ty");
-		assertEquals(10, result.size());
-		for (int i = 0; i < 10; i++) {
-			PetOwner petOwner = result.get(i);
-			assertEquals("Name " + i, petOwner.getName());
-			assertEquals("Address " + i, petOwner.getAddress().getAddress());
-			assertEquals("City " + i, petOwner.getAddress().getCity());
-		}
+		List<PetOwner> result = petOwnerDao.find(null, null, "fruti");
+		assertEquals(1, result.size());
+		
+		PetOwner p = result.get(0);
+		assertEquals("John Smith", p.getName());
+		assertEquals("Couves St.", p.getAddress().getAddress());
+		assertEquals("Hortifruti", p.getAddress().getCity());
 	}
 	
 	@Test
 	public void testFindParameterNameAndAddress() {
-		List<PetOwner> result = petOwnerDao.find("Nam", "dress", null);
-		assertEquals(10, result.size());
-		for (int i = 0; i < 10; i++) {
-			PetOwner petOwner = result.get(i);
-			assertEquals("Name " + i, petOwner.getName());
-			assertEquals("Address " + i, petOwner.getAddress().getAddress());
-			assertEquals("City " + i, petOwner.getAddress().getCity());
-		}
+		List<PetOwner> result = petOwnerDao.find("SMI", "st", null);
+		assertEquals(1, result.size());
+		
+		PetOwner p = result.get(0);
+		assertEquals("John Smith", p.getName());
+		assertEquals("Couves St.", p.getAddress().getAddress());
+		assertEquals("Hortifruti", p.getAddress().getCity());
 	}
 	
 	@Test
 	public void testFindParameterNameAndCity() {
-		List<PetOwner> result = petOwnerDao.find("Nam", null, "ty");
-		assertEquals(10, result.size());
-		for (int i = 0; i < 10; i++) {
-			PetOwner petOwner = result.get(i);
-			assertEquals("Name " + i, petOwner.getName());
-			assertEquals("Address " + i, petOwner.getAddress().getAddress());
-			assertEquals("City " + i, petOwner.getAddress().getCity());
-		}
+		List<PetOwner> result = petOwnerDao.find("john", null, "frut");
+		assertEquals(1, result.size());
+		
+		PetOwner p = result.get(0);
+		assertEquals("John Smith", p.getName());
+		assertEquals("Couves St.", p.getAddress().getAddress());
+		assertEquals("Hortifruti", p.getAddress().getCity());
 	}
 	
 	@Test
 	public void testFindParameterAddressAndCity() {
-		List<PetOwner> result = petOwnerDao.find(null, "ddres", "ty");
-		assertEquals(10, result.size());
-		for (int i = 0; i < 10; i++) {
-			PetOwner petOwner = result.get(i);
-			assertEquals("Name " + i, petOwner.getName());
-			assertEquals("Address " + i, petOwner.getAddress().getAddress());
-			assertEquals("City " + i, petOwner.getAddress().getCity());
-		}
+		List<PetOwner> result = petOwnerDao.find(null, "Couves", "Hortifruti");
+		assertEquals(1, result.size());
+		
+		PetOwner p = result.get(0);
+		assertEquals("John Smith", p.getName());
+		assertEquals("Couves St.", p.getAddress().getAddress());
+		assertEquals("Hortifruti", p.getAddress().getCity());
 	}
 }

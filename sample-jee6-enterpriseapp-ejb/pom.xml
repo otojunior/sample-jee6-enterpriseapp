@@ -54,7 +54,7 @@
 		</plugins>
 	</build>
 	
-	<profiles>
+	<!-- <profiles>
 		<profile>
 			<id>eclipselink-profile</id>
 			<activation>
@@ -89,5 +89,5 @@
 				</dependency>
 			</dependencies>
 		</profile>
-	</profiles>
+	</profiles> -->
 </project>

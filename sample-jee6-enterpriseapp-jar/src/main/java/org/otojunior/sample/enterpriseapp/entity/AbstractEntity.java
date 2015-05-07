@@ -3,8 +3,6 @@
  */
 package org.otojunior.sample.enterpriseapp.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -18,7 +16,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  *
  */
 @MappedSuperclass
-public abstract class AbstractEntity implements IEntity, Serializable {
+public abstract class AbstractEntity implements IEntity {
 	/**
 	 * 
 	 */
