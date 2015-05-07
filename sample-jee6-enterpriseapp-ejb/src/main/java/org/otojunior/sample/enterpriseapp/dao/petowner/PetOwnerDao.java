@@ -4,16 +4,13 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang3.StringUtils;
+import org.otojunior.sample.enterpriseapp.dao.AbstractDao;
 import org.otojunior.sample.enterpriseapp.entity.petowner.PetOwner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-
 
 /**
  * PetOwner Data Access Object pattern.
@@ -24,32 +21,25 @@ import org.slf4j.LoggerFactory;
  * @author [Author name]
  */
 @Stateless
-public class PetOwnerDao {
+public class PetOwnerDao extends AbstractDao<PetOwner> {
 	private static final Logger LOG = LoggerFactory.getLogger(PetOwnerDao.class);
 	
 	/**
-	 * Injected Entity Manger.
+	 * {@inheritDoc}
 	 */
-	@PersistenceContext
-	private EntityManager entityManager;
-	
-	/**
-	 * find all Users.
-	 * @return All users.
-	 */
+	@Override
 	public List<PetOwner> findAll() {
-		return entityManager.
+		return getEntityManager().
 			createNamedQuery(PetOwner.QUERY_FIND_ALL, PetOwner.class).
 			getResultList();
 	}
 	
 	/**
-	 * Find a Entity by id.
-	 * @param id Entity ID.
-	 * @return The PetOwner found (if any).
+	 * {@inheritDoc}
 	 */
+	@Override
 	public PetOwner findById(Long id) {
-		return entityManager.find(PetOwner.class, id);
+		return getEntityManager().find(PetOwner.class, id);
 	}
 
 	/**
@@ -86,7 +76,7 @@ public class PetOwnerDao {
 				first = false;
 			}
 			
-			TypedQuery<PetOwner> query = entityManager.createQuery(jpql.toString(), PetOwner.class);
+			TypedQuery<PetOwner> query = getEntityManager().createQuery(jpql.toString(), PetOwner.class);
 			LOG.info("JPQL: " + jpql.toString());
 			
 			if (StringUtils.isNotBlank(name)) {

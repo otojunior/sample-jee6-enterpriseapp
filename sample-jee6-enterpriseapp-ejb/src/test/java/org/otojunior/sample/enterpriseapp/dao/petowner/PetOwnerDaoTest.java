@@ -7,19 +7,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import org.otojunior.sample.enterpriseapp.dao.AbstractDaoTest;
 import org.otojunior.sample.enterpriseapp.entity.common.Address;
 import org.otojunior.sample.enterpriseapp.entity.petowner.PetOwner;
-import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,45 +20,21 @@ import org.slf4j.LoggerFactory;
  * User DAO Test.
  * @author [Author name]
  */
-public class PetOwnerDaoTest {
+public class PetOwnerDaoTest extends AbstractDaoTest<PetOwnerDao> {
 	private static final Logger LOG = LoggerFactory.getLogger(PetOwnerDaoTest.class);
 	
-	private static EntityManagerFactory factory;
-	private EntityManager entityManager;
-	
 	/**
-	 * DAO to be tested.
+	 * Default constructor.
 	 */
-	private PetOwnerDao petOwnerDao;
-	
-	@BeforeClass
-	public static void beforeClass() {
-		factory = Persistence.createEntityManagerFactory("test");
-	}
-	
-	@AfterClass
-	public static void afterClass() {
-		factory.close();
-	}
-	
-	/**
-	 * DAO Setup.
-	 * @throws Exception Generic exception.
-	 */
-	@Before
-	public void setUp() throws Exception {
-		petOwnerDao = new PetOwnerDao();
-		entityManager = factory.createEntityManager();
-		entityManager.getTransaction().begin();
-		Whitebox.setInternalState(petOwnerDao, "entityManager", entityManager);
-
-		populate();
+	public PetOwnerDaoTest() {
+		setDao(new PetOwnerDao());
 	}
 	
 	/**
 	 * Populate the database for the tests.
 	 */
-	private void populate() {
+	@Override
+	public void populate() {
 		// Entity 1
 		Address a = new Address();
 		a.setAddress("Couves St.");
@@ -76,7 +45,7 @@ public class PetOwnerDaoTest {
 		PetOwner p = new PetOwner();
 		p.setName("John Smith");
 		p.setAddress(a);
-		entityManager.persist(p);
+		getEntityManager().persist(p);
 		LOG.info(p.toString());
 		
 		// Entity 2
@@ -89,7 +58,7 @@ public class PetOwnerDaoTest {
 		p = new PetOwner();
 		p.setName("Mary Johnson");
 		p.setAddress(a);
-		entityManager.persist(p);
+		getEntityManager().persist(p);
 		LOG.info(p.toString());
 		
 		// Entity 3
@@ -102,18 +71,8 @@ public class PetOwnerDaoTest {
 		p = new PetOwner();
 		p.setName("Robert Marley");
 		p.setAddress(a);
-		entityManager.persist(p);
+		getEntityManager().persist(p);
 		LOG.info(p.toString());
-	}
-
-	/**
-	 * DAO Tear down.
-	 * @throws Exception Generic exception.
-	 */
-	@After
-	public void tearDown() throws Exception {
-		petOwnerDao = null;
-		entityManager.getTransaction().rollback();
 	}
 
 	/**
@@ -121,7 +80,7 @@ public class PetOwnerDaoTest {
 	 */
 	@Test
 	public void testFindAll() {
-		List<PetOwner> all = petOwnerDao.findAll();
+		List<PetOwner> all = getDao().findAll();
 		assertEquals(3, all.size());
 	}
 
@@ -130,17 +89,20 @@ public class PetOwnerDaoTest {
 	 */
 	@Test
 	public void testFindById() {
-		TypedQuery<Long> q = entityManager.createQuery("select min(p.id) from PetOwner p", Long.class);
+		TypedQuery<Long> q = getEntityManager().createQuery("select min(p.id) from PetOwner p", Long.class);
 		Long minId = q.getSingleResult();
 		
-		PetOwner p = petOwnerDao.findById(Long.valueOf(minId));
+		PetOwner p = getDao().findById(Long.valueOf(minId));
 		assertNotNull(p);
 		assertEquals("John Smith", p.getName());
 	}
 	
+	/**
+	 * Test find for all parameters.
+	 */
 	@Test
 	public void testFindAllParameters() {
-		List<PetOwner> result = petOwnerDao.find("john", "ot", "oo");
+		List<PetOwner> result = getDao().find("john", "ot", "oo");
 		assertEquals(1, result.size());
 		
 		PetOwner petOwner = result.get(0);
@@ -149,9 +111,12 @@ public class PetOwnerDaoTest {
 		assertEquals("Roots", petOwner.getAddress().getCity());
 	}
 	
+	/**
+	 * Find for parameter name.
+	 */
 	@Test
 	public void testFindParameterName() {
-		List<PetOwner> result = petOwnerDao.find("john", null, null);
+		List<PetOwner> result = getDao().find("john", null, null);
 		assertEquals(2, result.size());
 		
 		Collections.sort(result, new Comparator<PetOwner>() {
@@ -174,7 +139,7 @@ public class PetOwnerDaoTest {
 	
 	@Test
 	public void testFindParameterAddress() {
-		List<PetOwner> result = petOwnerDao.find(null, "ouv", null);
+		List<PetOwner> result = getDao().find(null, "ouv", null);
 		assertEquals(1, result.size());
 		
 		PetOwner p = result.get(0);
@@ -185,7 +150,7 @@ public class PetOwnerDaoTest {
 	
 	@Test
 	public void testFindParameterCity() {
-		List<PetOwner> result = petOwnerDao.find(null, null, "fruti");
+		List<PetOwner> result = getDao().find(null, null, "fruti");
 		assertEquals(1, result.size());
 		
 		PetOwner p = result.get(0);
@@ -196,7 +161,7 @@ public class PetOwnerDaoTest {
 	
 	@Test
 	public void testFindParameterNameAndAddress() {
-		List<PetOwner> result = petOwnerDao.find("SMI", "st", null);
+		List<PetOwner> result = getDao().find("SMI", "st", null);
 		assertEquals(1, result.size());
 		
 		PetOwner p = result.get(0);
@@ -207,7 +172,7 @@ public class PetOwnerDaoTest {
 	
 	@Test
 	public void testFindParameterNameAndCity() {
-		List<PetOwner> result = petOwnerDao.find("john", null, "frut");
+		List<PetOwner> result = getDao().find("john", null, "frut");
 		assertEquals(1, result.size());
 		
 		PetOwner p = result.get(0);
@@ -218,7 +183,7 @@ public class PetOwnerDaoTest {
 	
 	@Test
 	public void testFindParameterAddressAndCity() {
-		List<PetOwner> result = petOwnerDao.find(null, "Couves", "Hortifruti");
+		List<PetOwner> result = getDao().find(null, "Couves", "Hortifruti");
 		assertEquals(1, result.size());
 		
 		PetOwner p = result.get(0);
