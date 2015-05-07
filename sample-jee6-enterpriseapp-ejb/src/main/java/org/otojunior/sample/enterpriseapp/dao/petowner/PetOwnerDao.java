@@ -46,17 +46,18 @@ public class PetOwnerDao {
 	/**
 	 * Find a Entity by id.
 	 * @param id Entity ID.
-	 * @return The User found (if any).
+	 * @return The PetOwner found (if any).
 	 */
 	public PetOwner findById(Long id) {
 		return entityManager.find(PetOwner.class, id);
 	}
 
 	/**
-	 * Find a user
-	 * @param login
-	 * @param name
-	 * @return
+	 * Find a list of {@link PetOwner}
+	 * @param name PetOwner's name.
+	 * @param address PetOwner's address.
+	 * @param city PetOwner's city.
+	 * @return List of {@link PetOwner}
 	 */
 	public List<PetOwner> find(String name, String address, String city) {
 		List<PetOwner> result = Collections.emptyList();

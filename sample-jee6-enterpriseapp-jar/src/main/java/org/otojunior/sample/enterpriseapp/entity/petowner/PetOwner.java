@@ -30,15 +30,12 @@ import org.otojunior.sample.enterpriseapp.entity.common.Address;
 		query = "select new org.otojunior.sample.enterpriseapp.entity.petowner.PetOwner(p.id, p.name) from PetOwner p"),
 })
 public class PetOwner extends AbstractEntity {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public static final String QUERY_FIND_ALL = "petOwner.query.findAll";
 	
 	private static final int COL_LENGTH_NAME = 50;
-	
+
 	@NotNull
 	@Column(length=COL_LENGTH_NAME, nullable=false)
 	private String name;
@@ -52,14 +49,16 @@ public class PetOwner extends AbstractEntity {
 	private Address address;
 	
 	/**
-	 * 
+	 * Default constructor. 
 	 */
 	public PetOwner() {
 		
 	}
 	
 	/**
-	 * 
+	 * Alternative constructor.
+	 * @param id Entity ID.
+	 * @param name Pet's owner name.
 	 */
 	public PetOwner(Long id, String name) {
 		setId(id);
@@ -67,6 +66,7 @@ public class PetOwner extends AbstractEntity {
 	}
 
 	/**
+	 * Get the name.
 	 * @return the name
 	 */
 	public String getName() {
@@ -74,6 +74,7 @@ public class PetOwner extends AbstractEntity {
 	}
 
 	/**
+	 * Set the name.
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
@@ -81,6 +82,7 @@ public class PetOwner extends AbstractEntity {
 	}
 
 	/**
+	 * Get the photo.
 	 * @return the photo
 	 */
 	public Blob getPhoto() {
@@ -88,6 +90,7 @@ public class PetOwner extends AbstractEntity {
 	}
 
 	/**
+	 * Set the photo.
 	 * @param photo the photo to set
 	 */
 	public void setPhoto(Blob photo) {
@@ -95,6 +98,7 @@ public class PetOwner extends AbstractEntity {
 	}
 
 	/**
+	 * Get the address.
 	 * @return the address
 	 */
 	public Address getAddress() {
@@ -102,6 +106,7 @@ public class PetOwner extends AbstractEntity {
 	}
 
 	/**
+	 * Set the address.
 	 * @param address the address to set
 	 */
 	public void setAddress(Address address) {
