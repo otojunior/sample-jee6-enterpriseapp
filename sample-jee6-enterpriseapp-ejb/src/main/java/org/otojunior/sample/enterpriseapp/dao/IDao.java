@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * DAO generic interface.
- * @author 01456231650
+ * @author Oto Junior (otojunior@gmail.com)
  * 
  * @param <T> Entity to manage.
  */
