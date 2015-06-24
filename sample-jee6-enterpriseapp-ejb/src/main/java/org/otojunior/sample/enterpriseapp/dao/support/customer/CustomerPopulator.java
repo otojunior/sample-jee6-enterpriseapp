@@ -1,4 +1,4 @@
-package org.otojunior.sample.enterpriseapp.dao.support.petowner;
+package org.otojunior.sample.enterpriseapp.dao.support.customer;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -9,7 +9,7 @@ import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.otojunior.sample.enterpriseapp.dao.support.AbstractPopulator;
 import org.otojunior.sample.enterpriseapp.entity.common.Address;
-import org.otojunior.sample.enterpriseapp.entity.petowner.PetOwner;
+import org.otojunior.sample.enterpriseapp.entity.customer.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,8 +19,8 @@ import org.slf4j.LoggerFactory;
  */
 @Singleton
 @Startup
-public class PetOwnerPopulator extends AbstractPopulator {
-	private static final Logger LOG = LoggerFactory.getLogger(PetOwnerPopulator.class);
+public class CustomerPopulator extends AbstractPopulator {
+	private static final Logger LOG = LoggerFactory.getLogger(CustomerPopulator.class);
 	
 	/**
 	 * Start callback method.
@@ -28,7 +28,7 @@ public class PetOwnerPopulator extends AbstractPopulator {
 	@PostConstruct
 	@Override
 	public void start() {
-		LOG.trace("PetOwnerPopulator:start");
+		LOG.trace("CustomerPopulator:start");
 		
 		for (int i = 0; i < 10; i++) {
 			Address a = new Address();
@@ -37,7 +37,7 @@ public class PetOwnerPopulator extends AbstractPopulator {
 			a.setCity(randomStr());
 			a.setState("XY");
 			
-			PetOwner p = new PetOwner();
+			Customer p = new Customer();
 			p.setName(randomStr());
 			p.setAddress(a);
 			

@@ -5,7 +5,7 @@
 	version="2.0">
 
 	<persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
-		<class>org.otojunior.sample.enterpriseapp.entity.petowner.PetOwner</class>
+		<class>org.otojunior.sample.enterpriseapp.entity.customer.Customer</class>
 		<class>org.otojunior.sample.enterpriseapp.entity.common.Address</class>
 		
 		<properties>

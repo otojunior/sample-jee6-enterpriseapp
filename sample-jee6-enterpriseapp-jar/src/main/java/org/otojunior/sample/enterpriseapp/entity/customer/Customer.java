@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  */
-package org.otojunior.sample.enterpriseapp.entity.petowner;
+package org.otojunior.sample.enterpriseapp.entity.customer;
 
 import java.sql.Blob;
 
@@ -38,13 +38,13 @@ import org.otojunior.sample.enterpriseapp.entity.common.Address;
 @Entity
 @NamedQueries({ 
 	@NamedQuery(
-		name = PetOwner.QUERY_FIND_ALL, 
-		query = "select new org.otojunior.sample.enterpriseapp.entity.petowner.PetOwner(p.id, p.name) from PetOwner p"),
+		name = Customer.QUERY_FIND_ALL, 
+		query = "select new org.otojunior.sample.enterpriseapp.entity.customer.Customer(p.id, p.name) from Customer p"),
 })
-public class PetOwner extends AbstractEntity {
+public class Customer extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
-	public static final String QUERY_FIND_ALL = "petOwner.query.findAll";
+	public static final String QUERY_FIND_ALL = "customer.query.findAll";
 	
 	private static final int COL_LENGTH_NAME = 50;
 
@@ -63,7 +63,7 @@ public class PetOwner extends AbstractEntity {
 	/**
 	 * Default constructor. 
 	 */
-	public PetOwner() {
+	public Customer() {
 		
 	}
 	
@@ -72,7 +72,7 @@ public class PetOwner extends AbstractEntity {
 	 * @param id Entity ID.
 	 * @param name Pet's owner name.
 	 */
-	public PetOwner(Long id, String name) {
+	public Customer(Long id, String name) {
 		setId(id);
 		this.name = name;
 	}

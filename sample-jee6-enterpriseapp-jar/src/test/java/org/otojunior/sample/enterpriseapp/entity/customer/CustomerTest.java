@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  */
-package org.otojunior.sample.enterpriseapp.entity.petowner;
+package org.otojunior.sample.enterpriseapp.entity.customer;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -24,17 +24,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.otojunior.sample.enterpriseapp.entity.common.Address;
+import org.otojunior.sample.enterpriseapp.entity.customer.Customer;
 import org.powermock.reflect.Whitebox;
 
 /**
  * Pet Owner entity test class.
  * @author Oto Junior (otojunior@gmail.com)
  */
-public class PetOwnerTest {
+public class CustomerTest {
 	/**
 	 * Entity to be tested.
 	 */
-	private PetOwner petOwner;
+	private Customer customer;
 
 	/**
 	 * Test setup;
@@ -42,7 +43,7 @@ public class PetOwnerTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		petOwner = new PetOwner();
+		customer = new Customer();
 	}
 
 	/**
@@ -51,7 +52,7 @@ public class PetOwnerTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		petOwner = null;
+		customer = null;
 	}
 
 	/**
@@ -62,19 +63,19 @@ public class PetOwnerTest {
 		/*
 		 * Setting the entity state for tests the accessor methods.
 		 */
-		Whitebox.setInternalState(petOwner, "id", Long.valueOf(1L));
-		Whitebox.setInternalState(petOwner, "version", Long.valueOf(1L));
-		petOwner.setName("Test name");
+		Whitebox.setInternalState(customer, "id", Long.valueOf(1L));
+		Whitebox.setInternalState(customer, "version", Long.valueOf(1L));
+		customer.setName("Test name");
 		Address address = new Address();
-		petOwner.setAddress(address );
+		customer.setAddress(address );
 		
 		/*
 		 * Testing the accessor methods.
 		 */
-		assertEquals(Long.valueOf(1L), petOwner.getId());
-		assertEquals(Long.valueOf(1L), petOwner.getVersion());
-		assertEquals("Test name", petOwner.getName());
-		assertEquals(address, petOwner.getAddress());
+		assertEquals(Long.valueOf(1L), customer.getId());
+		assertEquals(Long.valueOf(1L), customer.getVersion());
+		assertEquals("Test name", customer.getName());
+		assertEquals(address, customer.getAddress());
 	}
 	
 	/**
@@ -82,10 +83,10 @@ public class PetOwnerTest {
 	 */
 	@Test
 	public void testEquals() {
-		PetOwner other = new PetOwner();
-		Whitebox.setInternalState(petOwner, "id", Long.valueOf(1L));
+		Customer other = new Customer();
+		Whitebox.setInternalState(customer, "id", Long.valueOf(1L));
 		Whitebox.setInternalState(other, "id", Long.valueOf(1L));
-		assertTrue(petOwner.equals(other));
+		assertTrue(customer.equals(other));
 	}
 	
 	/**
@@ -94,7 +95,7 @@ public class PetOwnerTest {
 	@Test
 	public void testEqualsOtherClass() {
 		String other = "otherClass";
-		assertFalse(petOwner.equals(other));
+		assertFalse(customer.equals(other));
 	}
 	
 	/**
@@ -102,8 +103,8 @@ public class PetOwnerTest {
 	 */
 	@Test
 	public void testEqualsSameObject() {
-		PetOwner other = petOwner;
-		assertTrue(petOwner.equals(other));
+		Customer other = customer;
+		assertTrue(customer.equals(other));
 	}
 	
 	/**
@@ -111,8 +112,8 @@ public class PetOwnerTest {
 	 */
 	@Test
 	public void testHashCode() {
-		Whitebox.setInternalState(petOwner, "id", Long.valueOf(1L));
-		assertEquals(32, petOwner.hashCode());
+		Whitebox.setInternalState(customer, "id", Long.valueOf(1L));
+		assertEquals(32, customer.hashCode());
 	}
 	
 	/**
@@ -120,7 +121,7 @@ public class PetOwnerTest {
 	 */
 	@Test
 	public void testHashCodeWithIdNull() {
-		assertEquals(31, petOwner.hashCode());
+		assertEquals(31, customer.hashCode());
 	}
 	
 	/**
@@ -128,10 +129,10 @@ public class PetOwnerTest {
 	 */
 	@Test
 	public void testNotEquals() {
-		PetOwner other = new PetOwner();
-		Whitebox.setInternalState(petOwner, "id", Long.valueOf(1L));
+		Customer other = new Customer();
+		Whitebox.setInternalState(customer, "id", Long.valueOf(1L));
 		Whitebox.setInternalState(other, "id", Long.valueOf(2L));
-		assertFalse(petOwner.equals(other));
+		assertFalse(customer.equals(other));
 	}
 	
 	/**
@@ -139,9 +140,9 @@ public class PetOwnerTest {
 	 */
 	@Test
 	public void testNotEqualsOtherWithIdNull() {
-		PetOwner other = new PetOwner();
-		Whitebox.setInternalState(petOwner, "id", Long.valueOf(1L));
-		assertFalse(petOwner.equals(other));
+		Customer other = new Customer();
+		Whitebox.setInternalState(customer, "id", Long.valueOf(1L));
+		assertFalse(customer.equals(other));
 	}
 	
 	/**
@@ -149,9 +150,9 @@ public class PetOwnerTest {
 	 */
 	@Test
 	public void testNotEqualsOtherWithIdNotNull() {
-		PetOwner other = new PetOwner();
+		Customer other = new Customer();
 		Whitebox.setInternalState(other, "id", Long.valueOf(1L));
-		assertFalse(petOwner.equals(other));
+		assertFalse(customer.equals(other));
 	}
 	
 	/**
@@ -159,8 +160,8 @@ public class PetOwnerTest {
 	 */
 	@Test
 	public void testNotEqualsOtherWithBothIdNull() {
-		PetOwner other = new PetOwner();
-		assertTrue(petOwner.equals(other));
+		Customer other = new Customer();
+		assertTrue(customer.equals(other));
 	}
 	
 	/**
@@ -169,8 +170,8 @@ public class PetOwnerTest {
 	@Test
 	public void testNotEqualsWithIdNull() {
 		User other = null;
-		Whitebox.setInternalState(petOwner, "id", Long.valueOf(1L));
-		assertFalse(petOwner.equals(other));
+		Whitebox.setInternalState(customer, "id", Long.valueOf(1L));
+		assertFalse(customer.equals(other));
 	}
 	
 	/**
@@ -178,12 +179,12 @@ public class PetOwnerTest {
 	 */
 	@Test
 	public void testToString() {
-		petOwner.setName("Name Test");
-		petOwner.setAddress(new Address());
-		Whitebox.setInternalState(petOwner, "id", Long.valueOf(1L));
-		Whitebox.setInternalState(petOwner, "version", Long.valueOf(0L));
+		customer.setName("Name Test");
+		customer.setAddress(new Address());
+		Whitebox.setInternalState(customer, "id", Long.valueOf(1L));
+		Whitebox.setInternalState(customer, "version", Long.valueOf(0L));
 		assertEquals(
-			"PetOwner[name=Name Test,photo=<null>,address=Address[address=<null>,number=<null>,zipCode=<null>,city=<null>,state=<null>],id=1,version=0]",
-			petOwner.toString());
+			"Customer[name=Name Test,photo=<null>,address=Address[address=<null>,number=<null>,zipCode=<null>,city=<null>,state=<null>],id=1,version=0]",
+			customer.toString());
 	}
 }

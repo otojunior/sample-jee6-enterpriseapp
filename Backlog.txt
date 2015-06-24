@@ -1,0 +1,7 @@
+[Customer]1---<Places>---*[Order]1---<Has Itens>---*[Itens]
+
+1. Criar um CRUD de Customers começando com tela de listagem e depois fazer tela de cadastro.
+
+2. Criar um cadastro de Order na qual, na tela do novo Order, o usuário seleciona um Customer
+e seleciona os Itens presentes naquela Order. Neste caso, o Order vai ser o Mestre e os Itens serão
+os detalhes.
