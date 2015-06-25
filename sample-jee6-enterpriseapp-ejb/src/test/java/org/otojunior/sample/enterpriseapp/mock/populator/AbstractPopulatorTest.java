@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.otojunior.sample.enterpriseapp.dao.support;
+package org.otojunior.sample.enterpriseapp.mock.populator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,6 +12,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.otojunior.sample.enterpriseapp.mock.populator.IPopulator;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

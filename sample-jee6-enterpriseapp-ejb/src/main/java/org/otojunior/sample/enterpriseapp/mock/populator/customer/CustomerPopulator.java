@@ -1,4 +1,4 @@
-package org.otojunior.sample.enterpriseapp.dao.support.customer;
+package org.otojunior.sample.enterpriseapp.mock.populator.customer;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -7,9 +7,9 @@ import javax.ejb.Startup;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.otojunior.sample.enterpriseapp.dao.support.AbstractPopulator;
 import org.otojunior.sample.enterpriseapp.entity.common.Address;
 import org.otojunior.sample.enterpriseapp.entity.customer.Customer;
+import org.otojunior.sample.enterpriseapp.mock.populator.AbstractPopulator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

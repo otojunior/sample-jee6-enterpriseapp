@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.otojunior.sample.enterpriseapp.dao.support;
+package org.otojunior.sample.enterpriseapp.mock.populator;
 
 /**
  * @author 01456231650

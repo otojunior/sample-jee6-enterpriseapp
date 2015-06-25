@@ -1,7 +1,7 @@
-package org.otojunior.sample.enterpriseapp.dao.support.customer;
+package org.otojunior.sample.enterpriseapp.mock.populator.customer;
 
-import org.otojunior.sample.enterpriseapp.dao.support.AbstractPopulatorTest;
-import org.otojunior.sample.enterpriseapp.dao.support.customer.CustomerPopulator;
+import org.otojunior.sample.enterpriseapp.mock.populator.AbstractPopulatorTest;
+import org.otojunior.sample.enterpriseapp.mock.populator.customer.CustomerPopulator;
 
 /**
  * 

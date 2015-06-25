@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.otojunior.sample.enterpriseapp.dao.support;
+package org.otojunior.sample.enterpriseapp.mock.populator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
