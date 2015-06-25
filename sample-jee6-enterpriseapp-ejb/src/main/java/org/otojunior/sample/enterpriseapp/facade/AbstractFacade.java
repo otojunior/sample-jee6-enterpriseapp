@@ -3,12 +3,10 @@
  */
 package org.otojunior.sample.enterpriseapp.facade;
 
-import java.io.Serializable;
-
 /**
- * Interface for Facades
+ * Abstract Facade
  * @author Oto Junior (otojunior@gmail.com)
  */
-public interface IFacade extends Serializable {
-
+public class AbstractFacade implements IFacade {
+	private static final long serialVersionUID = 1L;
 }

@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
  */
 @Stateless
 public class CustomerDao extends AbstractDao<Customer> {
+	private static final long serialVersionUID = 1L;
 	private static final Logger LOG = LoggerFactory.getLogger(CustomerDao.class);
 	
 	/**

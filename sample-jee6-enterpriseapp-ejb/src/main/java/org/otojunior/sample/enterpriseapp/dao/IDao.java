@@ -1,5 +1,6 @@
 package org.otojunior.sample.enterpriseapp.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * 
  * @param <T> Entity to manage.
  */
-public interface IDao<T, K> extends IPersistenceManager {
+public interface IDao<T, K> extends IPersistenceManager, Serializable {
 	/**
 	 * Return a list of <T> 
 	 * @return List of <T>
