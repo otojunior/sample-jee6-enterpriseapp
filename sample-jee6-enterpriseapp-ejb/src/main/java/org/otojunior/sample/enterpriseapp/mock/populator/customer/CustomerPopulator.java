@@ -15,7 +15,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Populate a initial data in database to demonstrate the application.
+ *
  * @author 01456231650
+ * @version $Id: $Id
  */
 @Singleton
 @Startup
@@ -23,6 +25,8 @@ public class CustomerPopulator extends AbstractPopulator {
 	private static final Logger LOG = LoggerFactory.getLogger(CustomerPopulator.class);
 	
 	/**
+	 * {@inheritDoc}
+	 *
 	 * Start callback method.
 	 */
 	@PostConstruct

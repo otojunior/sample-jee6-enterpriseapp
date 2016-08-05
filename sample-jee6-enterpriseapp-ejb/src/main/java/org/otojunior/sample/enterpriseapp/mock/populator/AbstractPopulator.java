@@ -10,8 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author 01456231650
+ * <p>Abstract AbstractPopulator class.</p>
  *
+ * @author 01456231650
+ * @version $Id: $Id
  */
 public abstract class AbstractPopulator implements IPopulator {
 	@SuppressWarnings("unused")
@@ -23,9 +25,7 @@ public abstract class AbstractPopulator implements IPopulator {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public EntityManager getEntityManager() {
 		return entityManager;

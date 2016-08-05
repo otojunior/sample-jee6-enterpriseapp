@@ -25,7 +25,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Address Entity.
+ *
  * @author Oto Junior (otojunior@gmail.com)
+ * @version $Id: $Id
  */
 @Embeddable
 public class Address {
@@ -56,6 +58,8 @@ public class Address {
 	private String state;
 	
 	/**
+	 * <p>Getter for the field <code>address</code>.</p>
+	 *
 	 * @return the address
 	 */
 	public String getAddress() {
@@ -63,6 +67,8 @@ public class Address {
 	}
 	
 	/**
+	 * <p>Getter for the field <code>city</code>.</p>
+	 *
 	 * @return the city
 	 */
 	public String getCity() {
@@ -70,6 +76,8 @@ public class Address {
 	}
 	
 	/**
+	 * <p>Getter for the field <code>number</code>.</p>
+	 *
 	 * @return the number
 	 */
 	public String getNumber() {
@@ -77,6 +85,8 @@ public class Address {
 	}
 	
 	/**
+	 * <p>Getter for the field <code>state</code>.</p>
+	 *
 	 * @return the state
 	 */
 	public String getState() {
@@ -84,6 +94,8 @@ public class Address {
 	}
 	
 	/**
+	 * <p>Getter for the field <code>zipCode</code>.</p>
+	 *
 	 * @return the zipCode
 	 */
 	public String getZipCode() {
@@ -91,6 +103,8 @@ public class Address {
 	}
 	
 	/**
+	 * <p>Setter for the field <code>address</code>.</p>
+	 *
 	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
@@ -98,6 +112,8 @@ public class Address {
 	}
 	
 	/**
+	 * <p>Setter for the field <code>city</code>.</p>
+	 *
 	 * @param city the city to set
 	 */
 	public void setCity(String city) {
@@ -105,6 +121,8 @@ public class Address {
 	}
 	
 	/**
+	 * <p>Setter for the field <code>number</code>.</p>
+	 *
 	 * @param number the number to set
 	 */
 	public void setNumber(String number) {
@@ -112,6 +130,8 @@ public class Address {
 	}
 	
 	/**
+	 * <p>Setter for the field <code>state</code>.</p>
+	 *
 	 * @param state the state to set
 	 */
 	public void setState(String state) {
@@ -119,15 +139,15 @@ public class Address {
 	}
 
 	/**
+	 * <p>Setter for the field <code>zipCode</code>.</p>
+	 *
 	 * @param zipCode the zipCode to set
 	 */
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
@@ -136,6 +156,7 @@ public class Address {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -149,6 +170,7 @@ public class Address {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {

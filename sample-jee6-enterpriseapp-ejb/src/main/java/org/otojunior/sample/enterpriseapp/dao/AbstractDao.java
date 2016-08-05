@@ -8,7 +8,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Abstract DAO.
+ *
  * @author 01456231650
+ * @version $Id: $Id
  */
 public abstract class AbstractDao<T> implements IDao<T, Long> {
 	private static final long serialVersionUID = 1L;
@@ -22,9 +24,7 @@ public abstract class AbstractDao<T> implements IDao<T, Long> {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	/**
-	 * @return the entityManager
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public EntityManager getEntityManager() {
 		return entityManager;

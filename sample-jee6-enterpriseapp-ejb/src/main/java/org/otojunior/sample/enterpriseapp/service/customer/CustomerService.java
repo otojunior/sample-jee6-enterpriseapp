@@ -16,7 +16,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Application Service for Customer.
+ *
  * @author Oto Junior (otojunior@gmail.com)
+ * @version $Id: $Id
  */
 @Stateless
 public class CustomerService extends AbstractService {
@@ -28,6 +30,7 @@ public class CustomerService extends AbstractService {
 
 	/**
 	 * Find all Customers.
+	 *
 	 * @return The customers list.
 	 */
 	public List<Customer> findAll() {
@@ -37,6 +40,7 @@ public class CustomerService extends AbstractService {
 	
 	/**
 	 * Find a customer by id.
+	 *
 	 * @param id the Customer Id.
 	 * @return the Customer found.
 	 */
@@ -47,8 +51,9 @@ public class CustomerService extends AbstractService {
 	
 	/**
 	 * Find a customer by name, address or city.
+	 *
 	 * @param name Name to find.
-	 * @param address Address to find. 
+	 * @param address Address to find.
 	 * @param city City to find.
 	 * @return List of Customers.
 	 */

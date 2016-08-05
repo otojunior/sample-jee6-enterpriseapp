@@ -18,18 +18,22 @@ package org.otojunior.sample.enterpriseapp.entity;
 import java.io.Serializable;
 
 /**
- * General Interface for Entity 
+ * General Interface for Entity
+ *
  * @author Oto Junior (otojunior@gmail.com)
+ * @version $Id: $Id
  */
 public interface IEntity extends Serializable {
 	/**
 	 * Get the entity ID.
+	 *
 	 * @return the Entity ID.
 	 */
 	public Long getId();
 	
 	/**
 	 * Get the optimistic lock version.
+	 *
 	 * @return the version.
 	 */
 	public Long getVersion();

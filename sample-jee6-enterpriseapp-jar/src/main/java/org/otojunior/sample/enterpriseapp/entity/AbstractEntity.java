@@ -25,7 +25,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Abstract Base Entity.
+ *
  * @author Oto Junior (otojunior@gmail.com)
+ * @version $Id: $Id
  */
 @MappedSuperclass
 public abstract class AbstractEntity implements IEntity {
@@ -47,24 +49,22 @@ public abstract class AbstractEntity implements IEntity {
 	@Version
 	private Long version;
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public Long getId() {
 		return id;
 	}
 
 	/**
+	 * <p>Setter for the field <code>id</code>.</p>
+	 *
 	 * @param id the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public Long getVersion() {
 		return version;
@@ -108,9 +108,7 @@ public abstract class AbstractEntity implements IEntity {
 		return result;
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);

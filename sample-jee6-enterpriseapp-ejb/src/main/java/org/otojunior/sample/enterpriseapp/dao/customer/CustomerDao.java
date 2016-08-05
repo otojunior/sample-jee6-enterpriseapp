@@ -14,20 +14,19 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Customer Data Access Object pattern.
- * 
+ *
  * Obs.:This DAO class may have an ancestor generic DAO class with parametrized entity.
  * (not showed here in this example).
- * 
+ *
  * @author [Author name]
+ * @version $Id: $Id
  */
 @Stateless
 public class CustomerDao extends AbstractDao<Customer> {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOG = LoggerFactory.getLogger(CustomerDao.class);
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public List<Customer> findAll() {
 		return getEntityManager().
@@ -35,20 +34,19 @@ public class CustomerDao extends AbstractDao<Customer> {
 			getResultList();
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public Customer findById(Long id) {
 		return getEntityManager().find(Customer.class, id);
 	}
 
 	/**
-	 * Find a list of {@link Customer}
+	 * Find a list of {@link org.otojunior.sample.enterpriseapp.entity.customer.Customer}
+	 *
 	 * @param name Customer's name.
 	 * @param address Customer's address.
 	 * @param city Customer's city.
-	 * @return List of {@link Customer}
+	 * @return List of {@link org.otojunior.sample.enterpriseapp.entity.customer.Customer}
 	 */
 	public List<Customer> find(String name, String address, String city) {
 		List<Customer> result = Collections.emptyList();
